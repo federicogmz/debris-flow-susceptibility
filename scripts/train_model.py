@@ -103,7 +103,7 @@ def save_artifacts(models: dict, scaler: StandardScaler, output_dir: Path) -> No
 
 def main():
     # Load data
-    data_path = Path(__file__).parents[1] / "data" / "torrencialidad.csv"
+    data_path = Path(__file__).resolve().parents[1] / "data" / "torrencialidad.csv"
     df = pd.read_csv(data_path)
     feature_pairs = [("A (sq. km)", "Rh"), ("Su", "Rh"), ("M", "Rh")]
 
@@ -111,7 +111,7 @@ def main():
     models, scaler = train_and_plot_models(df, feature_pairs)
 
     # Save artifacts
-    artifacts_dir = Path(__file__).parents[1] / "models"
+    artifacts_dir = Path(__file__).resolve().parents[1] / "models"
     save_artifacts(models, scaler, artifacts_dir)
     print(f"Artifacts saved to {artifacts_dir}")
 

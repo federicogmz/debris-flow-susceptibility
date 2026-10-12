@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite both the software and the paper."
+title: "Debris Flow Susceptibility from Basin Morphometry"
+type: software
+license: GPL-3.0-or-later
+repository-code: "https://github.com/federicogmz/debris-flow-susceptibility"
+authors:
+  - family-names: Gómez
+    given-names: Federico
+    orcid: "https://orcid.org/0000-0002-8525-4354"
+preferred-citation:
+  type: article
+  title: "Morphometrical analysis of torrential flows-prone catchments in tropical and mountainous terrain of the Colombian Andes by machine learning techniques"
+  authors:
+    - family-names: Arango
+      given-names: María Isabel
+    - family-names: Aristizábal
+      given-names: Edier
+    - family-names: Gómez
+      given-names: Federico
+  journal: "Natural Hazards"
+  volume: 105
+  issue: "1"
+  start: 983
+  end: 1012
+  year: 2021
+  doi: "10.1007/s11069-020-04346-5"

@@ -27,10 +27,13 @@ debris-flow-susceptibility/
 ├── scripts/
 │   └── train_model.py
 ├── src/
+│   ├── __init__.py
 │   └── morphometry.py
+├── CITATION.cff
 ├── LICENSE
 ├── README.md
-└── requirements.txt
+├── requirements.txt
+└── requirements-optional.txt
 ```
 
 ## Installation
@@ -45,7 +48,7 @@ debris-flow-susceptibility/
    python3 -m venv venv
    source venv/bin/activate
    ```
-3. Install dependencies:
+3. Install dependencies (requires Python >= 3.10):
    ```bash
    pip install -r requirements.txt
    ```
@@ -54,16 +57,16 @@ debris-flow-susceptibility/
 
 ### Interactive Morphometry Visualization
 
-Use the core module to compute and plot morphometric decision boundaries:
+Run from the root of the repository to compute and plot morphometric decision boundaries:
 
 ```python
+import pandas as pd
 from src.morphometry import visualize_morphometry
-import geopandas as gpd
 import gzip
 import pickle
 
-# Load basin shapefile
-basins = gpd.read_file('data/torrencialidad.shp')
+# Load basin dataset
+basins = pd.read_csv('data/torrencialidad.csv')
 
 # Load pre-trained models and scaler
 with gzip.open('models/models.pkl.gz', 'rb') as mf:
@@ -82,4 +85,4 @@ Arango, M. I., Aristizábal, E., & Gómez, F. (2021). Morphometrical analysis of
 
 ## License
 
-This work is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+This work is licensed under the GNU General Public License v3.0 or later (GPL-3.0-or-later) - see the [LICENSE](LICENSE) file for details.
