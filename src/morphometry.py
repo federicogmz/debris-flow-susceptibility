@@ -3,20 +3,20 @@
 morphometry.py
 
 Visualize morphometric classification boundaries using trained SVM models.
-Imports pre-trained models and scaler, applies to input GeoDataFrame.
+Imports pre-trained models and scaler, applies to input DataFrame.
 """
 
 import gzip
 import pickle
 import numpy as np
 import pandas as pd
-import geopandas as gpd
+from pathlib import Path
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 
 
 def visualize_morphometry(
-    basins: gpd.GeoDataFrame,
+    basins: pd.DataFrame,
     feature_pairs: list[tuple[str, str]],
     model_dict: dict[int, object],
     scaler: object,
@@ -25,7 +25,7 @@ def visualize_morphometry(
     Plot decision regions for each feature pair on the scaled morphometric data.
 
     Parameters:
-        basins: GeoDataFrame with columns specified in feature_pairs.
+        basins: DataFrame with columns specified in feature_pairs.
         feature_pairs: List of (x_feature, y_feature) column name pairs.
         model_dict: Dict mapping index to trained SVM models.
         scaler: Fitted scaler to normalize feature data.
@@ -80,15 +80,24 @@ def visualize_morphometry(
 
 
 if __name__ == "__main__":
-    # Example usage: load basins and models, then visualize
-    basin_shp = "data/torrencialidad.shp"
+    repo_root = Path(__file__).resolve().parents[1]
+    csv_path = repo_root / "data" / "torrencialidad.csv"
+    shp_path = repo_root / "data" / "torrencialidad.shp"
 
-    basins = gpd.read_file(basin_shp)
+    if csv_path.exists():
+        basins = pd.read_csv(csv_path)
+    elif shp_path.exists():
+        import geopandas as gpd
+        basins = gpd.read_file(shp_path)
+    else:
+        raise FileNotFoundError(f"No data file found in {repo_root / 'data'}")
 
-    # Load compressed models and scaler
-    with gzip.open("../models/models.pkl.gz", "rb") as mf:
+    models_path = repo_root / "models" / "models.pkl.gz"
+    scaler_path = repo_root / "models" / "scaler.pkl.gz"
+
+    with gzip.open(models_path, "rb") as mf:
         models = pickle.load(mf)
-    with gzip.open("../models/scaler.pkl.gz", "rb") as sf:
+    with gzip.open(scaler_path, "rb") as sf:
         scaler = pickle.load(sf)
 
     # Define feature pairs

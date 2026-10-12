@@ -1,0 +1,2 @@
+# Optional dependencies for vector GIS layers (.shp support)
+geopandas>=1.0.0
