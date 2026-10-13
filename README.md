@@ -1,5 +1,7 @@
 # Debris Flow Susceptibility from Basin Morphometry
 
+[![CI](https://github.com/federicogmz/debris-flow-susceptibility/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/federicogmz/debris-flow-susceptibility/actions/workflows/ci.yml)
+
 Geospatial and machine learning workflows for assessing debris flow susceptibility from basin morphometry based on Arango et al. (2021). This repository provides scripts, pre-trained models, training routines, and usage examples.
 
 Paper: https://link.springer.com/article/10.1007/s11069-020-04346-5

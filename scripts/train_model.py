@@ -8,14 +8,15 @@ Saves trained models and scaler using pickle with gzip compression.
 """
 
 import gzip
-import pickle
-import numpy as np
-import pandas as pd
 from pathlib import Path
-from sklearn.svm import SVC
+import pickle
+
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
+import numpy as np
+import pandas as pd
 from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
 
 
 def train_and_plot_models(
@@ -43,7 +44,7 @@ def train_and_plot_models(
 
     models = {}
     plt.style.use("seaborn-v0_8-whitegrid")
-    fig, axes = plt.subplots(1, len(feature_combinations), figsize=(18, 6))
+    _fig, axes = plt.subplots(1, len(feature_combinations), figsize=(18, 6))
 
     for idx, ((x_col, y_col), ax) in enumerate(zip(feature_combinations, axes)):
         xi = features.index(x_col)
