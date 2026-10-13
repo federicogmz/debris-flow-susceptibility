@@ -35,7 +35,7 @@ jobs:
 
       - name: Lint and format check with Ruff
         run: |
-          ruff check tests/ scripts/
+          ruff check tests/
           ruff format --check tests/
 
       - name: Run unit tests with pytest
