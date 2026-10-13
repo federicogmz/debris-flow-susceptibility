@@ -34,7 +34,7 @@ def test_data_integrity(dataset_df: pd.DataFrame):
 
     assert len(dataset_df) > 0, "Dataset is empty"
     assert dataset_df[required_cols].isna().sum().sum() == 0, "Dataset contains NaNs"
-    assert set(dataset_df["FFR"].unique()) == {"T", "NT"}, "Target classes mismatch"
+    assert set(dataset_df["FFR"].unique()) == {"T", "nT"}, "Target classes mismatch"
 
 
 @patch("matplotlib.pyplot.show")
